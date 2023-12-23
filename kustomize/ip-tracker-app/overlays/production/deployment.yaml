@@ -1,0 +1,5 @@
+kind: Deployment
+metadata:
+  name: ip-tracker-app
+spec:
+  replicas: 3

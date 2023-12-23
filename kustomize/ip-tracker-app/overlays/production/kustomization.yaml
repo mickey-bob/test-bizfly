@@ -1,0 +1,11 @@
+resources:
+  - ../../base
+patches:
+  - path: deployment.yaml
+    target:
+      kind: Deployment
+      name: "ip-tracker-app"
+namespace: production
+images:
+  - name: cr-hn-1.bizflycloud.vn/eddc3cd7b02f4984b854fbd173bf10f7/ip-tracker-app
+    newTag: main-68c1e930

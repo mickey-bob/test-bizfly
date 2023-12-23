@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ip-tracker-app
+spec:
+  replicas: 1
+  template:
+    spec:
+      securityContext:
+        {}
+      containers:
+        - name: ip-tracker-app
+          securityContext:
+            {}
+          image: "ip-tracker-app:latest"
+          imagePullPolicy: IfNotPresent
+          # livenessProbe:
+          #   failureThreshold: 3
+          #   httpGet:
+          #     path: /healthcheck
+          #     port: 8080
+          #   initialDelaySeconds: 10
+          #   periodSeconds: 30
+          #   successThreshold: 1
+          #   timeoutSeconds: 3
+          # readinessProbe:
+          #   failureThreshold: 3
+          #   httpGet:
+          #     path: /healthcheck
+          #     port: 8080
+          #   initialDelaySeconds: 10
+          #   periodSeconds: 30
+          #   successThreshold: 1
+          #   timeoutSeconds: 3
+          resources:
+            limits:
+              cpu: 500m
+              memory: 500Mi
+            requests:
+              cpu: 500m
+              memory: 500Mi

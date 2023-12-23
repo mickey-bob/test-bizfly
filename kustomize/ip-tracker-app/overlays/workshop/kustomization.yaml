@@ -1,0 +1,34 @@
+resources:
+  - ../../base
+patches:
+  - target:
+      kind: Deployment
+      name: ip-tracker-app
+    patch: |
+      - op: replace
+        path: /spec/replicas
+        value: 2
+
+  - patch: |
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: ip-tracker-app
+      spec:
+        ports:
+        - port: 8080
+          targetPort: 8080
+          nodePort: 30093
+        type: NodePort
+
+  - patch: |
+      $patch: delete
+      apiVersion: networking.k8s.io/v1
+      kind: Ingress
+      metadata:
+        name: ip-tracker-app
+
+namespace: production
+images:
+  - name: cr-hn-1.bizflycloud.vn/eddc3cd7b02f4984b854fbd173bf10f7/ip-tracker-app
+    newTag: main-1422_181223

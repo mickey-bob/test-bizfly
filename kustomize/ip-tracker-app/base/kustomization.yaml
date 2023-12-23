@@ -1,0 +1,13 @@
+resources:
+- deployment.yaml
+- service.yaml
+- ingress.yaml
+commonLabels:
+  app.kubernetes.io/name: ip-tracker-app
+  app: ip-tracker-app
+  app.kubernetes.io/managed-by: DevOps-Mentor
+  app.kubernetes.io/instance: ip-tracker-app
+images:
+  - name: ip-tracker-app
+    newName: cr-hn-1.bizflycloud.vn/eddc3cd7b02f4984b854fbd173bf10f7/ip-tracker-app
+    newTag: latest

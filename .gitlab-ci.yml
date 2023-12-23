@@ -1,0 +1,11 @@
+stages:
+  - test
+
+test_gitops:
+  stage: test
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - exit 0
+  only:
+    - merge_requests
